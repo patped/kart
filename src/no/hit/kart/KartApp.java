@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 
 
 public class KartApp extends Application {
-  final private String FIL = "hendelser.txt";
+  final private String FIL = "/hendelser.txt";
    
     @Override
     public void start(Stage stage) {
