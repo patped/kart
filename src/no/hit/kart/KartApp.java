@@ -76,5 +76,14 @@ public class KartApp extends Application {
     } catch (Exception e) {
       System.out.println("kult! dette fikk du ikke til :)))");
     }
+    // Tegner en sirkel (legger den inn i scenegrafen)
+    private Circle tegnSirkel(Hendelse hendelse) {
+    Circle sirkel = new Circle(
+            hendelse.getPunkt().getX(),
+            hendelse.getPunkt().getY(),
+            10,
+            Color.rgb(0, 0, 255)
+    );
+    return sirkel;
   }
 }
