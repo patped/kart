@@ -69,13 +69,18 @@ public class KartApp extends Application {
       return 0;
   }
   
-  private void lesFraFil(String fil) {
+  public Hendelse[] lesFraFil(String fil) throws Exception {
     InputStream in = getClass().getResourceAsStream(fil);
-    try {
-      BufferedReader innfil = new BufferedReader(new InputStreamReader(in, "UTF-8"));
-    } catch (Exception e) {
-      System.out.println("kult! dette fikk du ikke til :)))");
+    String [] data;
+    BufferedReader innfil = new BufferedReader(new InputStreamReader(in, "UTF-8"));
+    int antall = Integer.parseInt(innfil.readLine());
+    Hendelse[] hendelser = new Hendelse[antall];
+    for (int i=0;i<antall;i++) {
+      hendelser[i] = new Hendelse(innfil.readLine());
     }
+    return hendelser;
+  }
+  
     // Tegner en sirkel (legger den inn i scenegrafen)
     private Circle tegnSirkel(Hendelse hendelse) {
     Circle sirkel = new Circle(
