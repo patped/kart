@@ -9,6 +9,8 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -38,19 +40,17 @@ public class KartApp extends Application {
     bildenode.setImage(bilde);
     root.getChildren().add(bildenode);
     
-    // Les inn x
-    int fraBrukerY = LesHeltallFraBruker("Y");
-    int fraBrukerX = LesHeltallFraBruker("X");
+    // Les inn
+    Hendelse[] hendelser = null;
+    try {
+      hendelser = lesFraFil(FIL);
+    } catch (Exception ex) {
+      Logger.getLogger(KartApp.class.getName()).log(Level.SEVERE, null, ex);
+    }
     
-    // Tegner en sirkel (legger den inn i scenegrafen)
-    Circle sirkel = new Circle(
-            fraBrukerY,
-            fraBrukerX,
-            10,
-            Color.rgb(255, 255, 0)
-    );
-    root.getChildren().add(sirkel);
-  
+    for (int i=0; i<hendelser.length; i++)
+      root.getChildren().add(tegnSirkel(hendelser[i]));
+    
     // Viser scenegrafen
     stage.show();
   }
