@@ -19,6 +19,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
@@ -63,6 +64,10 @@ public class KartApp extends Application {
                 farge(bruker,hendelser[i].getPunkt())
             )
         );
+        Text beskrivelse = new Text(hendelser[i].getBeskrivelse());
+        beskrivelse.setX(hendelser[i].getPunkt().getX()+20);
+        beskrivelse.setY(hendelser[i].getPunkt().getY()+5);
+        root.getChildren().add(beskrivelse);
     }
     
     
