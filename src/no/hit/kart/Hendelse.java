@@ -19,6 +19,15 @@ public class Hendelse {
     this.punkt = punkt;
     this.beskrivelse = beskrivelse;
   }
+  
+  public Hendelse(String linje) {
+    String[] data = linje.split(";");
+    
+    dato = new Dato(data[0]);
+    punkt = new Punkt(Integer.parseInt(data[1]),Integer.parseInt(data[2]));
+    beskrivelse = data[3];
+  }
+  
 
   public Dato getDato() {
     return dato;
