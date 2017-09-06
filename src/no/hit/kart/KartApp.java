@@ -5,6 +5,9 @@
  */
 package no.hit.kart;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Optional;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -18,6 +21,7 @@ import javafx.stage.Stage;
 
 
 public class KartApp extends Application {
+  final private String FIL = "hendelser.txt";
    
     @Override
     public void start(Stage stage) {
@@ -63,5 +67,14 @@ public class KartApp extends Application {
       return Integer.parseInt(result.get());
     else
       return 0;
+  }
+  
+  private void lesFraFil(String fil) {
+    InputStream in = getClass().getResourceAsStream(fil);
+    try {
+      BufferedReader innfil = new BufferedReader(new InputStreamReader(in, "UTF-8"));
+    } catch (Exception e) {
+      System.out.println("kult! dette fikk du ikke til :)))");
+    }
   }
 }
