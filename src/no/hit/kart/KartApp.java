@@ -49,6 +49,10 @@ public class KartApp extends Application {
             farge(bruker,bruker)
         )
     );
+    Text beskrivelse = new Text("Bruker");
+    beskrivelse.setX(bruker.getX()+20);
+    beskrivelse.setY(bruker.getY()+5);
+    root.getChildren().add(beskrivelse);
     
     // Les inn fra fil
     Hendelse[] hendelser = null;
@@ -64,7 +68,7 @@ public class KartApp extends Application {
                 farge(bruker,hendelser[i].getPunkt())
             )
         );
-        Text beskrivelse = new Text(hendelser[i].getBeskrivelse());
+        beskrivelse = new Text(hendelser[i].getBeskrivelse());
         beskrivelse.setX(hendelser[i].getPunkt().getX()+20);
         beskrivelse.setY(hendelser[i].getPunkt().getY()+5);
         root.getChildren().add(beskrivelse);
