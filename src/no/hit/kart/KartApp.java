@@ -98,12 +98,12 @@ public class KartApp extends Application {
   }
   
     // Tegner en sirkel (legger den inn i scenegrafen)
-    private Circle tegnSirkel(Hendelse hendelse) {
+    private Circle tegnSirkel(Punkt punkt, int[] farge) {
     Circle sirkel = new Circle(
-            hendelse.getPunkt().getX(),
-            hendelse.getPunkt().getY(),
+            punkt.getX(),
+            punkt.getY(),
             10,
-            Color.rgb(0, 0, 255)
+            Color.rgb(farge[0], farge[1], farge[2])
     );
     return sirkel;
   }
