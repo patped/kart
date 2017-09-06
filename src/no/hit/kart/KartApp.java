@@ -55,10 +55,17 @@ public class KartApp extends Application {
       hendelser = lesFraFil(FIL);
     } catch (Exception ex) {
       Logger.getLogger(KartApp.class.getName()).log(Level.SEVERE, null, ex);
+    }    
+    for (int i=0; i<hendelser.length; i++) {
+        root.getChildren().add(
+            tegnSirkel(
+                hendelser[i].getPunkt(),
+                farge(bruker,hendelser[i].getPunkt())
+            )
+        );
     }
     
-    for (int i=0; i<hendelser.length; i++)
-      root.getChildren().add(tegnSirkel(hendelser[i]));
+    
     
     // Viser scenegrafen
     stage.show();
