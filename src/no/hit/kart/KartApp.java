@@ -91,4 +91,14 @@ public class KartApp extends Application {
     );
     return sirkel;
   }
+    
+  // Velger farge på sirkel
+    private int[] farge(Punkt a, Punkt b) {
+      if (a.avstand(b) == 0)
+        return new int[] {0,255,0};
+      if (a.avstand(b) < 20)
+        return new int[] {255,0,0};
+      else
+        return new int[] {0,0,255};
+    }
 }
