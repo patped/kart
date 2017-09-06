@@ -40,7 +40,16 @@ public class KartApp extends Application {
     bildenode.setImage(bilde);
     root.getChildren().add(bildenode);
     
-    // Les inn
+    // Les inn fra bruker
+    Punkt bruker = new Punkt(LesHeltallFraBruker("X"),LesHeltallFraBruker("Y"));
+    root.getChildren().add(
+        tegnSirkel(
+            bruker,
+            farge(bruker,bruker)
+        )
+    );
+    
+    // Les inn fra fil
     Hendelse[] hendelser = null;
     try {
       hendelser = lesFraFil(FIL);
