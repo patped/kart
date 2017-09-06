@@ -19,6 +19,14 @@ public class Dato {
         this.mnd = mnd;
         this.år = år;
     }
+    
+    public Dato(String data) {
+      String[] dato = data.split("\\.");
+      
+      dag = Integer.parseInt(dato[0]);
+      mnd = Integer.parseInt(dato[1]);
+      år = Integer.parseInt(dato[2]);
+    }
 
     public int getDag() {
         return dag;
