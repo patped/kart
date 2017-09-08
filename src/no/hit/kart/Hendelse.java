@@ -11,9 +11,9 @@ package no.hit.kart;
  */
 public class Hendelse {
 
-  Dato dato;
-  Punkt punkt;
-  String beskrivelse;
+  private Dato dato;
+  private Punkt punkt;
+  private String beskrivelse;
 
   public Hendelse(Dato dato, Punkt punkt, String beskrivelse) {
     this.dato = dato;
