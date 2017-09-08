@@ -45,7 +45,7 @@ public class KartApp extends Application {
 
     // Les inn fra bruker
     Punkt bruker = new Punkt(LesHeltallFraBruker("X"), LesHeltallFraBruker("Y"));
-    lagKryss(bruker.getX(),bruker.getY());
+    lagKryss(bruker.getX(), bruker.getY());
 
     // Les inn fra fil
     Hendelse[] hendelser = null;
