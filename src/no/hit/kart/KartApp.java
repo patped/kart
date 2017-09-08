@@ -125,7 +125,7 @@ public class KartApp extends Application {
   // Velger farge på sirkel
   private int[] farge(Punkt nærmeste, Punkt a, double kortesteAvstand) {
     if (kortesteAvstand < 50 && nærmeste == a) {
-      return new int[]{255, 0, 0};
+      return new int[]{0, 255, 0};
     } else {
       return new int[]{0, 0, 255};
     }
