@@ -19,18 +19,20 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 
 public class KartApp extends Application {
 
   final private String FIL = "/hendelser.txt";
+  Group root = new Group();
 
   @Override
   public void start(Stage stage) {
     // Definerer vinduet og initierer scenegrafen
 
-    Group root = new Group();
     Scene scene = new Scene(root, 800, 400);
     stage.setScene(scene);
     stage.setTitle("Demo av enkel grafikk i JavaFX");
@@ -43,16 +45,7 @@ public class KartApp extends Application {
 
     // Les inn fra bruker
     Punkt bruker = new Punkt(LesHeltallFraBruker("X"), LesHeltallFraBruker("Y"));
-    root.getChildren().add(
-        tegnSirkel(
-            bruker,
-            farge(bruker, bruker)
-        )
-    );
-    Text beskrivelse = new Text("Bruker");
-    beskrivelse.setX(bruker.getX() + 20);
-    beskrivelse.setY(bruker.getY() + 5);
-    root.getChildren().add(beskrivelse);
+    lagKryss(bruker.getX(),bruker.getY());
 
     // Les inn fra fil
     Hendelse[] hendelser = null;
@@ -68,7 +61,7 @@ public class KartApp extends Application {
               farge(bruker, hendelser[i].getPunkt())
           )
       );
-      beskrivelse = new Text(hendelser[i].getBeskrivelse());
+      Text beskrivelse = new Text(hendelser[i].getBeskrivelse());
       beskrivelse.setX(hendelser[i].getPunkt().getX() + 20);
       beskrivelse.setY(hendelser[i].getPunkt().getY() + 5);
       root.getChildren().add(beskrivelse);
@@ -126,5 +119,20 @@ public class KartApp extends Application {
     } else {
       return new int[]{0, 0, 255};
     }
+  }
+
+  private void lagKryss(int fraBrukerX, int fraBrukerY) {
+    Rectangle kryss1 = new Rectangle(fraBrukerX + 5.5, fraBrukerY - 10.5, 4, 16);
+    Rectangle kryss2 = new Rectangle(fraBrukerX, fraBrukerY, 4, 16);
+    kryss1.setFill(Color.BLUE);
+    kryss2.setFill(Color.BLUE);
+    Rotate rotate = new Rotate(45, fraBrukerX, fraBrukerY);
+    Rotate rotate2 = new Rotate(135, fraBrukerX, fraBrukerY);
+    kryss2.getTransforms().add(rotate);
+    kryss1.getTransforms().add(rotate2);
+
+    root.getChildren().add(kryss1);
+    root.getChildren().add(kryss2);
+
   }
 }
