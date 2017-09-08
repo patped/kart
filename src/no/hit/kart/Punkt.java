@@ -10,6 +10,7 @@ package no.hit.kart;
  * @author patrick
  */
 public class Punkt {
+
   private int x;
   private int y;
 
@@ -38,9 +39,12 @@ public class Punkt {
   public String toString() {
     return "Punkt{" + "x=" + x + ", y=" + y + '}';
   }
-  
-  public int avstand(Punkt ) {
-    
+
+  public double avstand(Punkt punktTo) {
+    return Math.sqrt(
+        Math.pow((-this.x + punktTo.x), 2)
+        + Math.pow((-this.y + punktTo.y), 2)
+    );
   }
-  
+
 }
