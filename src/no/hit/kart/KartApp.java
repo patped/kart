@@ -43,7 +43,7 @@ public class KartApp extends Application {
     bildenode.setImage(bilde);
     root.getChildren().add(bildenode);
 
-    // Les inn fra bruker
+    // Les inn fra bruker og lager et kryss
     Punkt bruker = new Punkt(LesHeltallFraBruker("X"), LesHeltallFraBruker("Y"));
     lagKryss(bruker.getX(), bruker.getY());
 
@@ -64,7 +64,8 @@ public class KartApp extends Application {
         nærmeste = hendelse.getPunkt();
       }
     }
-    
+
+    // Tegner sirkler (legger den inn i scenegrafen)
     for (int i = 0; i < hendelser.length; i++) {
       root.getChildren().add(
           tegnSirkel(
@@ -86,6 +87,7 @@ public class KartApp extends Application {
     launch(args);
   }
 
+  // Les heltall fra bruker
   private int LesHeltallFraBruker(String kordinatNavn) {
     TextInputDialog dialog = new TextInputDialog();
     dialog.setHeaderText("Kordinat " + kordinatNavn);
@@ -109,7 +111,7 @@ public class KartApp extends Application {
     return hendelser;
   }
 
-  // Tegner en sirkel (legger den inn i scenegrafen)
+  // Tegner en sirkel
   private Circle tegnSirkel(Punkt punkt, int[] farge) {
     Circle sirkel = new Circle(
         punkt.getX(),
@@ -129,6 +131,7 @@ public class KartApp extends Application {
     }
   }
 
+  // Lager  kryss utifra innleste kordinater fra bruker
   private void lagKryss(int fraBrukerX, int fraBrukerY) {
     Rectangle kryss1 = new Rectangle(fraBrukerX + 5.5, fraBrukerY - 10.5, 4, 16);
     Rectangle kryss2 = new Rectangle(fraBrukerX, fraBrukerY, 4, 16);
