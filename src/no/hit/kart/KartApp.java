@@ -54,11 +54,22 @@ public class KartApp extends Application {
     } catch (Exception ex) {
       Logger.getLogger(KartApp.class.getName()).log(Level.SEVERE, null, ex);
     }
+
+    // Finner det nærmeste punktet
+    double kortesteAvstand = Double.MAX_VALUE;
+    Punkt nærmeste = null;
+    for (Hendelse hendelse : hendelser) {
+      if (bruker.avstand(hendelse.getPunkt()) < kortesteAvstand) {
+        kortesteAvstand = bruker.avstand(hendelse.getPunkt());
+        nærmeste = hendelse.getPunkt();
+      }
+    }
+    
     for (int i = 0; i < hendelser.length; i++) {
       root.getChildren().add(
           tegnSirkel(
               hendelser[i].getPunkt(),
-              farge(bruker, hendelser[i].getPunkt())
+              farge(nærmeste, hendelser[i].getPunkt(), kortesteAvstand)
           )
       );
       Text beskrivelse = new Text(hendelser[i].getBeskrivelse());
@@ -110,8 +121,8 @@ public class KartApp extends Application {
   }
 
   // Velger farge på sirkel
-  private int[] farge(Punkt a, Punkt b) {
-    if (a.avstand(b) < 20) {
+  private int[] farge(Punkt nærmeste, Punkt a, double kortesteAvstand) {
+    if (kortesteAvstand < 50 && nærmeste == a) {
       return new int[]{255, 0, 0};
     } else {
       return new int[]{0, 0, 255};
